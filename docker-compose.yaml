@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  selfharmadmin:
+    volumes:
+      - ./static:/app/static
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: selfharmadmin:v1
+    env_file:
+      - ./.env
+    environment:
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
