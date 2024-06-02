@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.1.162', '0.0.0.0']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split()
 
 
 # Application definition
