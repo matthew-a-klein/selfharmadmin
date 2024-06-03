@@ -11,9 +11,19 @@ services:
       - PORT=8000
     ports:
       - "8000:8000"
+    volumes:
+      - static_files:/static
+      - type: bind
+        source: ./db.sqlite3
+        target: /app/db.sqlite3 
     command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
     networks:
       - nginx_network
+
+
+
+volumes:
+  static_files:
 networks:
   nginx_network:
     external: true
